@@ -16,6 +16,7 @@ exec('node steamrecup.js', (err, stdout, stderr) => {
     console.log(stdout);
   });
 
+  // Récupère les données du fichier steam_profile.json
 const getSteamProfileData = async () => {
   return new Promise((resolve, reject) => {
     fs.readFile('steam_profile.json', (err, data) => {
@@ -27,7 +28,22 @@ const getSteamProfileData = async () => {
     });
   });
 };
+// Execution du script steamrecup2.js au démarrage du serveur
+exec('node steamrecup2.js', (err, stdout, stderr) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    console.log(stdout);
+  });
 
+
+
+
+
+
+
+// Formate le temps de jeu en heures et minutes
 const formatPlaytime = (playtime) => {
   const hours = Math.floor(playtime / 60);
   const minutes = playtime % 60;
